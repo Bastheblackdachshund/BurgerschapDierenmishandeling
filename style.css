@@ -1,14 +1,10 @@
 /*
 Theme Name: HelpChildren
-Theme URI: https://templatesjungle.com/downloads/help-children-free-bootstrap-5-html-nonprofit-template/
 Author: TemplatesJungle
 Author URI: https://templatesjungle.com/
-Description: HelpChildren is Bootstrap 5 HTML Template for nonprofit organizations by TemplatesJungle.
 Version: 1.2
 */
-
-/** Base Styles
---------------------------------------------------------------*/
+/** Base Styles */
 :root {
   --accent-color: #F4BE37;
   --secondary-color: #E2EAF1;
@@ -19,8 +15,7 @@ Version: 1.2
   --link-color: #092035;
 }
 
-/** Typography
---------------------------------------------------------------*/
+/** Typography */
 body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -49,8 +44,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* Image Hover Effects
-------------------------------------------------------------- */
+/* Image Hover Effects */
 .zoom-effect {
   margin-bottom: 30px;
   overflow: hidden;
@@ -64,8 +58,7 @@ a:hover {
   transform: scale(1.08);
 }
 
-/* - Button
-------------------------------------------------------------- */
+/* Button */
 .button a {
    font-weight: 700;
    text-transform: uppercase;
@@ -90,8 +83,7 @@ a.btn-yellow:hover,
   color: #FFB61D;
 }
 
-/* Section Padding
---------------------------------------------------------------*/
+/* Section Padding */
 .padding-xsmall {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -135,8 +127,7 @@ a.btn-yellow:hover,
   padding-top: 0 !important;
 }
 
-/* Section margin
---------------------------------------------------------------*/
+/* Section margin */
 .margin-small {
   margin-top: 3em;
   margin-bottom: 3em;
@@ -164,8 +155,7 @@ a.btn-yellow:hover,
   }
 }
 
-/* Preloader
---------------------------------------------------------------*/
+/* Preloader */
 *#overlayer {
   width:100%;
   height:100%;  
@@ -204,12 +194,10 @@ a.btn-yellow:hover,
   background-color: #f74d75;
   animation: dot-3-move 2s ease infinite, index 6s ease infinite;
 }
-
 .dot-2 {
   background-color: #10beae;
   animation: dot-2-move 2s ease infinite, index 6s -4s ease infinite;
 }
-
 .dot-1 {
   background-color: #ffe386;
   animation: dot-1-move 2s ease infinite, index 6s -2s ease infinite;
@@ -222,7 +210,6 @@ a.btn-yellow:hover,
   80% {transform: translateY(-90px) scale(.45)}
   100% {transform: translateY(0px) scale(1)}
 }
-
 @keyframes dot-2-move {
   20% {transform: scale(1)}
   45% {transform: translate(-16px, 12px) scale(.45)}
@@ -230,7 +217,6 @@ a.btn-yellow:hover,
   80% {transform: translate(-80px, 60px) scale(.45)}
   100% {transform: translateY(0px) scale(1)}
 }
-
 @keyframes dot-1-move {
   20% {transform: scale(1)}
   45% {transform: translate(16px, 12px) scale(.45)}
@@ -238,7 +224,6 @@ a.btn-yellow:hover,
   80% {transform: translate(80px, 60px) scale(.45)}
   100% {transform: translateY(0px) scale(1)}
 }
-
 @keyframes rotate-move {
   55% {transform: translate(-50%, -50%) rotate(0deg)}
   80% {transform: translate(-50%, -50%) rotate(360deg)}
@@ -251,9 +236,7 @@ a.btn-yellow:hover,
   66.6% {z-index: 1}
 }
 
-/** Header
---------------------------------------------------------------*/
-
+/** Header */
 .site-header {
   position: fixed;
   width: 100%;
@@ -289,8 +272,7 @@ a.btn-yellow:hover,
   color: #FFFFFF;
 }
 
-/* Post Item
---------------------------------------------------------------*/
+/* Post Item */
 .post-item {
     max-width: 370px;
     margin-bottom: 30px;
@@ -333,8 +315,7 @@ a.btn-yellow:hover,
     margin-right: 20px;
 }
 
-/* Footer Section
---------------------------------------------------------------*/
+/* Footer Section */
 #footer {
     background-color: #111;
 }
@@ -355,8 +336,7 @@ a.btn-yellow:hover,
   margin-right: 20px;
 }
 
-/* Bootstrap theme override 
---------------------------------------------------------------*/
+/* Bootstrap theme override */
 .accordion-button:not(.collapsed) {
     color: var(--dark-color);
     background-color: transparent;

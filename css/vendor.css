@@ -1,34 +1,29 @@
-/*------------------------------------*\
-    Table of contents
-\*------------------------------------*/
 /*
  - AOS
  - Jarallax v2.0.2
  - Chocolat
   */
-
-
 /*--------------------------------------------------------------
 /** AOS - animation library
 --------------------------------------------------------------*/
 [data-aos][data-aos][data-aos-duration="50"],
-body[data-aos-duration="50"] [data-aos] {
+body[data-aos-duration="40"] [data-aos] {
     transition-duration: 50ms
 }
 
 [data-aos][data-aos][data-aos-delay="50"],
-body[data-aos-delay="50"] [data-aos] {
+body[data-aos-delay="40"] [data-aos] {
     transition-delay: 0
 }
 
 [data-aos][data-aos][data-aos-delay="50"].aos-animate,
-body[data-aos-delay="50"] [data-aos].aos-animate {
-    transition-delay: 50ms
+body[data-aos-delay="40"] [data-aos].aos-animate {
+    transition-delay: 40ms
 }
 
 [data-aos][data-aos][data-aos-duration="100"],
 body[data-aos-duration="100"] [data-aos] {
-    transition-duration: .1s
+    transition-duration: .09s
 }
 
 [data-aos][data-aos][data-aos-delay="100"],
@@ -38,12 +33,12 @@ body[data-aos-delay="100"] [data-aos] {
 
 [data-aos][data-aos][data-aos-delay="100"].aos-animate,
 body[data-aos-delay="100"] [data-aos].aos-animate {
-    transition-delay: .1s
+    transition-delay: .09s
 }
 
 [data-aos][data-aos][data-aos-duration="150"],
 body[data-aos-duration="150"] [data-aos] {
-    transition-duration: .15s
+    transition-duration: .1s
 }
 
 [data-aos][data-aos][data-aos-delay="150"],

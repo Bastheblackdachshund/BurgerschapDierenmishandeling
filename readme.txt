@@ -1,3 +1,18 @@
+fuck you, we are stealing this shit.
+
+we are a darkweb gang.
+
+door: 
+Duke
+Sander
+Mink
+Dean
+
+
+
+
+
+
 FREE FOR BOTH PERSONAL AND COMMERCIAL USE
 
 This HTML Template is provided by TemplatesJungle.com and is free to use in both personal and commercial projects as long as you don't remove our credit link in the footer.
@@ -45,5 +60,3 @@ https://getbootstrap.com/
 JQuery Plugins
 
 Thanks for downloading from TemplatesJungle.com !
-
-
