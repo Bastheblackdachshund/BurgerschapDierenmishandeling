@@ -1,16 +1,6 @@
-/*!
-  * Bootstrap v5.1.3 (https://getbootstrap.com/)
-  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  */
 import * as Popper from '@popperjs/core';
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): util/index.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
+
 const MAX_UID = 1000000;
 const MILLISECONDS_MULTIPLIER = 1000;
 const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
@@ -45,19 +35,14 @@ const getSelector = element => {
     // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
     // `document.querySelector` will rightfully complain it is invalid.
     // See https://github.com/twbs/bootstrap/issues/32273
-
     if (!hrefAttr || !hrefAttr.includes('#') && !hrefAttr.startsWith('.')) {
       return null;
     } // Just in case some CMS puts out a full URL with the anchor appended
-
-
     if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
       hrefAttr = `#${hrefAttr.split('#')[1]}`;
     }
-
     selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
   }
-
   return selector;
 };
 
@@ -80,20 +65,15 @@ const getTransitionDurationFromElement = element => {
   if (!element) {
     return 0;
   } // Get transition-duration of the element
-
-
   let {
     transitionDuration,
     transitionDelay
   } = window.getComputedStyle(element);
   const floatTransitionDuration = Number.parseFloat(transitionDuration);
   const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
-
   if (!floatTransitionDuration && !floatTransitionDelay) {
     return 0;
   } // If multiple durations are defined, take the first
-
-
   transitionDuration = transitionDuration.split(',')[0];
   transitionDelay = transitionDelay.split(',')[0];
   return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
@@ -107,11 +87,9 @@ const isElement = obj => {
   if (!obj || typeof obj !== 'object') {
     return false;
   }
-
   if (typeof obj.jquery !== 'undefined') {
     obj = obj[0];
   }
-
   return typeof obj.nodeType !== 'undefined';
 };
 
@@ -120,11 +98,9 @@ const getElement = obj => {
     // it's a jQuery object or a node element
     return obj.jquery ? obj[0] : obj;
   }
-
   if (typeof obj === 'string' && obj.length > 0) {
     return document.querySelector(obj);
   }
-
   return null;
 };
 
@@ -152,15 +128,12 @@ const isDisabled = element => {
   if (!element || element.nodeType !== Node.ELEMENT_NODE) {
     return true;
   }
-
   if (element.classList.contains('disabled')) {
     return true;
   }
-
   if (typeof element.disabled !== 'undefined') {
     return element.disabled;
   }
-
   return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
 };
 
@@ -168,22 +141,16 @@ const findShadowRoot = element => {
   if (!document.documentElement.attachShadow) {
     return null;
   } // Can find the shadow root otherwise it'll return the document
-
-
   if (typeof element.getRootNode === 'function') {
     const root = element.getRootNode();
     return root instanceof ShadowRoot ? root : null;
   }
-
   if (element instanceof ShadowRoot) {
     return element;
   } // when we don't find a shadow root
-
-
   if (!element.parentNode) {
     return null;
   }
-
   return findShadowRoot(element.parentNode);
 };
 
@@ -196,8 +163,6 @@ const noop = () => {};
  *
  * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
-
-
 const reflow = element => {
   // eslint-disable-next-line no-unused-expressions
   element.offsetHeight;
@@ -207,11 +172,9 @@ const getjQuery = () => {
   const {
     jQuery
   } = window;
-
   if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
     return jQuery;
   }
-
   return null;
 };
 
@@ -238,13 +201,11 @@ const defineJQueryPlugin = plugin => {
   onDOMContentLoaded(() => {
     const $ = getjQuery();
     /* istanbul ignore if */
-
     if ($) {
       const name = plugin.NAME;
       const JQUERY_NO_CONFLICT = $.fn[name];
       $.fn[name] = plugin.jQueryInterface;
       $.fn[name].Constructor = plugin;
-
       $.fn[name].noConflict = () => {
         $.fn[name] = JQUERY_NO_CONFLICT;
         return plugin.jQueryInterface;
@@ -264,18 +225,15 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
     execute(callback);
     return;
   }
-
   const durationPadding = 5;
   const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding;
   let called = false;
-
   const handler = ({
     target
   }) => {
     if (target !== transitionElement) {
       return;
     }
-
     called = true;
     transitionElement.removeEventListener(TRANSITION_END, handler);
     execute(callback);
@@ -301,32 +259,17 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
 
 const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
   let index = list.indexOf(activeElement); // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
-
   if (index === -1) {
     return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0];
   }
-
   const listLength = list.length;
   index += shouldGetNext ? 1 : -1;
-
   if (isCycleAllowed) {
     index = (index + listLength) % listLength;
   }
-
   return list[Math.max(0, Math.min(index, listLength - 1))];
 };
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): dom/event-handler.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
 
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/;
 const stripNameRegex = /\..*/;
@@ -340,11 +283,6 @@ const customEvents = {
 };
 const customEventsRegex = /^(mouseenter|mouseleave)/i;
 const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
-/**
- * ------------------------------------------------------------------------
- * Private methods
- * ------------------------------------------------------------------------
- */
 
 function getUidEvent(element, uid) {
   return uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++;
@@ -360,11 +298,9 @@ function getEvent(element) {
 function bootstrapHandler(element, fn) {
   return function handler(event) {
     event.delegateTarget = element;
-
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn);
     }
-
     return fn.apply(element, [event]);
   };
 }
@@ -372,31 +308,25 @@ function bootstrapHandler(element, fn) {
 function bootstrapDelegationHandler(element, selector, fn) {
   return function handler(event) {
     const domElements = element.querySelectorAll(selector);
-
     for (let {
       target
     } = event; target && target !== this; target = target.parentNode) {
       for (let i = domElements.length; i--;) {
         if (domElements[i] === target) {
           event.delegateTarget = target;
-
           if (handler.oneOff) {
             EventHandler.off(element, event.type, selector, fn);
           }
-
           return fn.apply(target, [event]);
         }
       }
     } // To please ESLint
-
-
     return null;
   };
 }
 
 function findHandler(events, handler, delegationSelector = null) {
   const uidEventList = Object.keys(events);
-
   for (let i = 0, len = uidEventList.length; i < len; i++) {
     const event = events[uidEventList[i]];
 
@@ -404,7 +334,6 @@ function findHandler(events, handler, delegationSelector = null) {
       return event;
     }
   }
-
   return null;
 }
 
@@ -413,11 +342,9 @@ function normalizeParams(originalTypeEvent, handler, delegationFn) {
   const originalHandler = delegation ? delegationFn : handler;
   let typeEvent = getTypeEvent(originalTypeEvent);
   const isNative = nativeEvents.has(typeEvent);
-
   if (!isNative) {
     typeEvent = originalTypeEvent;
   }
-
   return [delegation, originalHandler, typeEvent];
 }
 
@@ -425,14 +352,11 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   if (typeof originalTypeEvent !== 'string' || !element) {
     return;
   }
-
   if (!handler) {
     handler = delegationFn;
     delegationFn = null;
   } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
   // this prevents the handler from being dispatched the same way as mouseover or mouseout does
-
-
   if (customEventsRegex.test(originalTypeEvent)) {
     const wrapFn = fn => {
       return function (event) {
@@ -441,7 +365,6 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
         }
       };
     };
-
     if (delegationFn) {
       delegationFn = wrapFn(delegationFn);
     } else {
@@ -471,11 +394,9 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
 
 function removeHandler(element, events, typeEvent, handler, delegationSelector) {
   const fn = findHandler(events[typeEvent], handler, delegationSelector);
-
   if (!fn) {
     return;
   }
-
   element.removeEventListener(typeEvent, fn, Boolean(delegationSelector));
   delete events[typeEvent][fn.uidEvent];
 }
@@ -500,41 +421,33 @@ const EventHandler = {
   on(element, event, handler, delegationFn) {
     addHandler(element, event, handler, delegationFn, false);
   },
-
   one(element, event, handler, delegationFn) {
     addHandler(element, event, handler, delegationFn, true);
   },
-
   off(element, originalTypeEvent, handler, delegationFn) {
     if (typeof originalTypeEvent !== 'string' || !element) {
       return;
     }
-
     const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn);
     const inNamespace = typeEvent !== originalTypeEvent;
     const events = getEvent(element);
     const isNamespace = originalTypeEvent.startsWith('.');
-
     if (typeof originalHandler !== 'undefined') {
       // Simplest case: handler is passed, remove that listener ONLY.
       if (!events || !events[typeEvent]) {
         return;
       }
-
       removeHandler(element, events, typeEvent, originalHandler, delegation ? handler : null);
       return;
     }
-
     if (isNamespace) {
       Object.keys(events).forEach(elementEvent => {
         removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
       });
     }
-
     const storeElementEvent = events[typeEvent] || {};
     Object.keys(storeElementEvent).forEach(keyHandlers => {
       const handlerKey = keyHandlers.replace(stripUidRegex, '');
-
       if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
         const event = storeElementEvent[keyHandlers];
         removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
@@ -546,7 +459,6 @@ const EventHandler = {
     if (typeof event !== 'string' || !element) {
       return null;
     }
-
     const $ = getjQuery();
     const typeEvent = getTypeEvent(event);
     const inNamespace = event !== typeEvent;
@@ -556,7 +468,6 @@ const EventHandler = {
     let nativeDispatch = true;
     let defaultPrevented = false;
     let evt = null;
-
     if (inNamespace && $) {
       jQueryEvent = $.Event(event, args);
       $(element).trigger(jQueryEvent);
@@ -564,7 +475,6 @@ const EventHandler = {
       nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
       defaultPrevented = jQueryEvent.isDefaultPrevented();
     }
-
     if (isNative) {
       evt = document.createEvent('HTMLEvents');
       evt.initEvent(typeEvent, bubbles, true);
@@ -574,8 +484,6 @@ const EventHandler = {
         cancelable: true
       });
     } // merge custom information in our event
-
-
     if (typeof args !== 'undefined') {
       Object.keys(args).forEach(key => {
         Object.defineProperty(evt, key, {
@@ -590,11 +498,9 @@ const EventHandler = {
     if (defaultPrevented) {
       evt.preventDefault();
     }
-
     if (nativeDispatch) {
       element.dispatchEvent(evt);
     }
-
     if (evt.defaultPrevented && typeof jQueryEvent !== 'undefined') {
       jQueryEvent.preventDefault();
     }
@@ -604,34 +510,19 @@ const EventHandler = {
 
 };
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): dom/data.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
 const elementMap = new Map();
 const Data = {
   set(element, key, instance) {
     if (!elementMap.has(element)) {
       elementMap.set(element, new Map());
     }
-
     const instanceMap = elementMap.get(element); // make it clear we only want one instance per element
     // can be removed later when multiple key/instances are fine to be used
-
     if (!instanceMap.has(key) && instanceMap.size !== 0) {
       // eslint-disable-next-line no-console
       console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`);
       return;
     }
-
     instanceMap.set(key, instance);
   },
 
@@ -639,7 +530,6 @@ const Data = {
     if (elementMap.has(element)) {
       return elementMap.get(element).get(key) || null;
     }
-
     return null;
   },
 
@@ -647,28 +537,14 @@ const Data = {
     if (!elementMap.has(element)) {
       return;
     }
-
     const instanceMap = elementMap.get(element);
     instanceMap.delete(key); // free up element references if there are no instances left for an element
-
     if (instanceMap.size === 0) {
       elementMap.delete(element);
     }
   }
 
 };
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): base-component.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
 
 const VERSION = '5.1.3';
 
