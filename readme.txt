@@ -1,22 +1,6 @@
-It is a free HTML CSS template by https://templatesjungle.com/
-
-You can use this template as a starter template and start building as you require.
-
-The code is consistent and can be easily maintained as we have followed a good coding standard. We want everyone to easily understand it and modify it according to their requirement. As the main goal of providing these templates is to give you something to work on before even starting.
-
-Preview URL:
-https://demo.templatesjungle.com/helpchildren/
-
-Get the Full Version here: 
-https://templatesjungle.gumroad.com/l/helpchildren-free-bootstrap-5-html-template
-
-
 FREE FOR BOTH PERSONAL AND COMMERCIAL USE
 
 This HTML Template is provided by TemplatesJungle.com and is free to use in both personal and commercial projects as long as you don't remove our credit link in the footer.
-
-However, you can remove the credit link by paying for No Attribution version of the template.
-
 
 RIGHTS
 
@@ -26,7 +10,7 @@ You can modify and sell it to your clients.
 
 
 PROHIBITIONS
-
+(damn)
 You cannot remove the credit link which links back to templatesjungle.com.
 
 You are not permitted to resell or redistribute (paid or free) as it is. 
@@ -44,15 +28,9 @@ You can contact us to report any bugs and errors in the template. We will try an
 
 Feel free to let us know about what you want to see in the future downloads. We will definitely give it a thought while creating our next freebie.
 
-
 CREDITS & REFERENCES
 
 https://getbootstrap.com/
-
-Stock Photos
-https://unsplash.com/
-https://www.freepik.com/
-https://www.pexels.com/
 
 Fonts
 Google fonts
@@ -65,9 +43,6 @@ Bootstrap Framework
 https://getbootstrap.com/
 
 JQuery Plugins
-
-Swiper Slider - https://swiperjs.com/
-Chocolat.js – a Free Lightbox Plugin -http://chocolat.insipi.de/
 
 Thanks for downloading from TemplatesJungle.com !
 
