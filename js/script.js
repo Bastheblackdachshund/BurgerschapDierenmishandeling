@@ -1,24 +1,20 @@
 (function($) {
-
   "use strict";
-
   // init Chocolat light box
+
   var initChocolat = function() {
     Chocolat(document.querySelectorAll('.image-link'), {
       imageSize: 'contain',
       loop: true,
     })
   }
-
   var initCharts = function() {
 
     if ($(".chart")[0]){
-    
       var barColors = [
         "#F4BE37",
         "#E2EAF1"
       ];
-
       new Chart("orphans", {
         type: "doughnut",
         data: {
@@ -39,7 +35,6 @@
           }
         }
       });
-
       new Chart("labor", {
         type: "doughnut",
         data: {
@@ -60,7 +55,6 @@
           }
         }
       });
-
       new Chart("education", {
         type: "doughnut",
         data: {
@@ -81,7 +75,6 @@
           }
         }
       });
-
       new Chart("health", {
         type: "doughnut",
         data: {
@@ -108,7 +101,6 @@
   // init jarallax parallax
   var initJarallax = function() {
     jarallax(document.querySelectorAll(".jarallax"));
-
     jarallax(document.querySelectorAll(".jarallax-keep-img"), {
       keepImg: true,
     });
@@ -127,24 +119,19 @@
   }
 
   $(document).ready(function () {
-
     // preloader
     $(window).load(function() {
       $("#overlayer").fadeOut("slow");
       $('body').addClass('loaded');
     })
-
     initScrollNav();
     initChocolat();
     initCharts();
     initJarallax();
-
     // Animate on Scroll
     AOS.init({
       duration: 600,
       once: true,
     })
   });
-
-
 })(jQuery);
